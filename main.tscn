@@ -61,8 +61,8 @@ shadow_enabled = true
 environment = SubResource("Environment_0xm2m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9999811, 0.005374044, -0.0029844705, 0, 0.48550493, 0.87423384, 0.0061471476, -0.87421733, 0.48549575, 0.2409325, 13.424047, 13.4870205)
-fov = 60.0
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 20, 6)
+fov = 55.0
 size = 20.0
 
 [node name="Player" type="Node3D" parent="."]
