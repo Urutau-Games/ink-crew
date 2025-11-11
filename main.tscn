@@ -72,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.212234, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3782845, -0.26049256, -4.453962)
 script = ExtResource("1_ig7tw")
 bomb_scene = ExtResource("2_0xm2m")
+max_bombs = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_7dm0k")
