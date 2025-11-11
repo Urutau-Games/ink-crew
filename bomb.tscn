@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq38kepskdjop"]
+
+[ext_resource type="Script" uid="uid://dl7jalc1xs4t6" path="res://bomb.gd" id="1_573fp"]
+
+[node name="Bomb" type="Node3D"]
+top_level = true
+script = ExtResource("1_573fp")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]

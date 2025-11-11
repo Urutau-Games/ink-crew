@@ -7,6 +7,24 @@ var _mass: float = 15
 
 @onready var visuals: Node3D = %Visuals
 
+@export var bomb_scene: PackedScene
+@export var max_bombs: int = 1
+
+var _available_bombs: int
+
+func _ready() -> void:
+	_available_bombs = max_bombs
+
+func _process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("drop_bomb") and _available_bombs > 0):
+		var bomb = bomb_scene.instantiate()
+		add_child(bomb)
+		bomb.global_position = Vector3(global_position)
+		bomb.global_position.y = 0.5
+		bomb.exploded.connect(_refill_bombs)
+		
+		_available_bombs -= 1
+
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("walk_left", "walk_right", "walk_forward", "walk_backward").normalized()
 	
@@ -18,6 +36,9 @@ func _physics_process(delta: float) -> void:
 	_rotate_visuals(direction, delta)
 	_apply_movement(direction, delta)
 
+func _refill_bombs():
+	_available_bombs = min(_available_bombs + 1, max_bombs)
+	
 func _apply_movement(movement: Vector2, delta: float) -> void:
 	var resulting_velocity := Vector3.ZERO
 	
