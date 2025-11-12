@@ -1,17 +1,16 @@
 [gd_scene load_steps=10 format=3 uid="uid://yo33fcsr8xiv"]
 
 [ext_resource type="Script" uid="uid://dr5ovv38o2qnk" path="res://floor_tile.gd" id="1_u3y6w"]
-[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/texture_01_dark.png" id="2_riurw"]
-[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/texture_02_green.png" id="3_nisnk"]
-[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/texture_02_orange.png" id="4_wydfu"]
-[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/texture_02_purple.png" id="5_y0asi"]
-[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/texture_02_red.png" id="6_fw844"]
-[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/texture_13_light.png" id="7_xag6x"]
+[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/kenney_textures/texture_01_dark.png" id="2_riurw"]
+[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/kenney_textures/texture_02_green.png" id="3_nisnk"]
+[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/kenney_textures/texture_02_orange.png" id="4_wydfu"]
+[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="5_y0asi"]
+[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="6_fw844"]
+[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="7_xag6x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riurw"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("2_riurw")
-albedo_texture_force_srgb = true
+albedo_texture = ExtResource("7_xag6x")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_riurw"]
 

@@ -17,13 +17,18 @@ func _explode():
 	for raycast: RayCast3D in %RayCasts.get_children():
 		raycast.force_raycast_update()
 		while(raycast.is_colliding()):
-			var affected_tile = raycast.get_collider()
-			_affected_tiles.push_back(affected_tile)
-			raycast.add_exception(affected_tile)
+			var collider = raycast.get_collider()
+			var object = collider.get_parent()
+			
+			if not object is FloorTile:
+				break
+				
+			_affected_tiles.push_back(collider.get_parent())
+			raycast.add_exception(collider)
 			raycast.force_raycast_update()
 	
 	for tile in _affected_tiles:
-		tile.get_parent().paint(color)
+		tile.paint(color)
 		
 	exploded.emit()
 	queue_free()

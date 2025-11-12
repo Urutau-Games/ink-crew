@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnur7vgar2smn"
-path.s3tc="res://.godot/imported/texture_01_dark.png-8ce2b5954f125e986b21f03c2bafc155.s3tc.ctex"
+uid="uid://cjkcoivvyu4bq"
+path="res://.godot/imported/texture_02_orange.png-206cc0730b7a14437a6c1747b0c5afad.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture_01_dark.png"
-dest_files=["res://.godot/imported/texture_01_dark.png-8ce2b5954f125e986b21f03c2bafc155.s3tc.ctex"]
+source_file="res://assets/kenney_textures/texture_02_orange.png"
+dest_files=["res://.godot/imported/texture_02_orange.png-206cc0730b7a14437a6c1747b0c5afad.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

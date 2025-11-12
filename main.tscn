@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://duwoi70lglhbr"]
+[gd_scene load_steps=9 format=3 uid="uid://duwoi70lglhbr"]
 
-[ext_resource type="Script" uid="uid://b05oafcstmm7m" path="res://scenario.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b5cg5euqmr6ip" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://yo33fcsr8xiv" path="res://floor_tile.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cecx8yqy8878i" path="res://rooms/room_1/room_1.tscn" id="4_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -14,10 +13,12 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
 sky = SubResource("Sky_ig7tw")
+ambient_light_source = 2
+ambient_light_color = Color(0.24115604, 0.24115604, 0.24115601, 1)
 tonemap_mode = 4
-tonemap_exposure = 1.5
 glow_enabled = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
@@ -27,22 +28,18 @@ height = 1.67
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lquwl")
 
-[node name="Scenario" type="Node3D" parent="."]
-script = ExtResource("1_h2yge")
-floor_tile_scene = ExtResource("2_1bvp3")
-
 [node name="Environment" type="Node3D" parent="."]
-visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.48296297, 0.12940955, 0, 0.25881907, 0.9659258, -0.50000006, 0.83651626, -0.22414389, 0, 0, 0)
 shadow_enabled = true
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_0xm2m")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.935, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.979805, 0.935, -9.496761)
 script = ExtResource("1_ig7tw")
 bomb_scene = ExtResource("2_0xm2m")
 
@@ -61,3 +58,5 @@ height = 1.67
 transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0.9823961, 7.5916624, 2.6108222)
 fov = 55.0
 size = 20.0
+
+[node name="Room1" parent="." instance=ExtResource("4_1bvp3")]
