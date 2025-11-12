@@ -7,8 +7,12 @@ var _mass: float = 15
 
 @onready var visuals: Node3D = %Visuals
 
+@export_category("Scene Settings")
 @export var bomb_scene: PackedScene
+
+@export_category("Gameplay")
 @export var max_bombs: int = 1
+@export var bomb_color: Constants.FloorColor
 
 var _available_bombs: int
 
@@ -17,13 +21,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("drop_bomb") and _available_bombs > 0):
-		var bomb = bomb_scene.instantiate()
-		add_child(bomb)
-		bomb.global_position = Vector3(roundi(global_position.x), 0.6, roundi(global_position.z))
-		#bomb.global_position.y = 0.6
-		bomb.exploded.connect(_refill_bombs)
-		
+		_drop_bomb()
 		_available_bombs -= 1
+
+func _drop_bomb():
+	var bomb: Bomb = bomb_scene.instantiate()
+	bomb.color = bomb_color
+	add_child(bomb)
+	bomb.global_position = Vector3(roundi(global_position.x), 0.6, roundi(global_position.z))
+	bomb.exploded.connect(_refill_bombs)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("walk_left", "walk_right", "walk_forward", "walk_backward").normalized()

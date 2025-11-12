@@ -1,16 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq38kepskdjop"]
+[gd_scene load_steps=9 format=3 uid="uid://bq38kepskdjop"]
 
 [ext_resource type="Script" uid="uid://dl7jalc1xs4t6" path="res://bomb.gd" id="1_573fp"]
+[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/kenney_textures/texture_01_dark.png" id="2_apr5j"]
+[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/kenney_textures/texture_02_green.png" id="3_ugjkb"]
+[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/kenney_textures/texture_02_orange.png" id="4_r0wls"]
+[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="5_a3tha"]
+[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="6_1g03t"]
+[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="7_pmxwx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_573fp"]
+resource_local_to_scene = true
 
 [node name="Bomb" type="Node3D"]
 top_level = true
 script = ExtResource("1_573fp")
 bomb_strength = 3
+textures = Dictionary[int, Texture2D]({
+0: ExtResource("2_apr5j"),
+1: ExtResource("3_ugjkb"),
+2: ExtResource("4_r0wls"),
+3: ExtResource("5_a3tha"),
+4: ExtResource("6_1g03t"),
+5: ExtResource("7_pmxwx")
+})
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="Visuals" type="CSGSphere3D" parent="."]
 use_collision = true
 collision_layer = 4
 collision_mask = 0
+material = SubResource("StandardMaterial3D_573fp")
 
 [node name="RayCasts" type="Node3D" parent="."]
 unique_name_in_owner = true
