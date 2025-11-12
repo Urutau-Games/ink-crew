@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://duwoi70lglhbr"]
+[gd_scene load_steps=10 format=3 uid="uid://duwoi70lglhbr"]
 
 [ext_resource type="Script" uid="uid://b05oafcstmm7m" path="res://scenario.gd" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b5cg5euqmr6ip" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://yo33fcsr8xiv" path="res://floor_tile.tscn" id="2_1bvp3"]
 
@@ -24,6 +25,7 @@ radius = 0.4
 height = 1.67
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_lquwl")
 
 [node name="Scenario" type="Node3D" parent="."]
 script = ExtResource("1_h2yge")
