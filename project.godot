@@ -43,6 +43,10 @@ drop_bomb={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="explosion_detection"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

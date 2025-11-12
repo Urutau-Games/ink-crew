@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var _rotation_acceleration: float = 10
 var _grounded_desacceleration: float = 0
-var _speed: float = 8
+var _speed: float = 5
 var _mass: float = 15
 
 @onready var visuals: Node3D = %Visuals
@@ -19,8 +19,8 @@ func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("drop_bomb") and _available_bombs > 0):
 		var bomb = bomb_scene.instantiate()
 		add_child(bomb)
-		bomb.global_position = Vector3(global_position)
-		bomb.global_position.y = 0.5
+		bomb.global_position = Vector3(roundi(global_position.x), 0.6, roundi(global_position.z))
+		#bomb.global_position.y = 0.6
 		bomb.exploded.connect(_refill_bombs)
 		
 		_available_bombs -= 1

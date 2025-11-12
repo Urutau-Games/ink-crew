@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://yo33fcsr8xiv"]
+
+[ext_resource type="Script" uid="uid://dr5ovv38o2qnk" path="res://floor_tile.gd" id="1_u3y6w"]
+[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/texture_01_dark.png" id="2_riurw"]
+[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/texture_02_green.png" id="3_nisnk"]
+[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/texture_02_orange.png" id="4_wydfu"]
+[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/texture_02_purple.png" id="5_y0asi"]
+[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/texture_02_red.png" id="6_fw844"]
+[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/texture_13_light.png" id="7_xag6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riurw"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_riurw")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_riurw"]
+
+[node name="FloorTile" type="Node3D"]
+script = ExtResource("1_u3y6w")
+textures = Dictionary[int, Texture2D]({
+0: ExtResource("2_riurw"),
+1: ExtResource("3_nisnk"),
+2: ExtResource("4_wydfu"),
+3: ExtResource("5_y0asi"),
+4: ExtResource("6_fw844"),
+5: ExtResource("7_xag6x")
+})
+
+[node name="Tile" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(1, 0.2, 1)
+material = SubResource("StandardMaterial3D_riurw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="ExplosionDetection" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_riurw")
+debug_fill = false
