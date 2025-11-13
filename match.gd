@@ -1,4 +1,4 @@
-extends Node3D
+extends Control
 
 func _unhandled_input(event: InputEvent) -> void:
 	var keyboard = event as InputEventKey

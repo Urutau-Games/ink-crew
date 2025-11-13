@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://duwoi70lglhbr"]
+[gd_scene load_steps=8 format=3 uid="uid://duwoi70lglhbr"]
 
-[ext_resource type="Script" uid="uid://b5cg5euqmr6ip" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://c6mvnm4ilc8vm" path="res://player.tscn" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://cib4xjwhs384f" path="res://human_player_controller.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cecx8yqy8878i" path="res://rooms/room_1/room_1.tscn" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://c5us0siigewc5" path="res://random_npc_controller.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cecx8yqy8878i" path="res://rooms/room_1/room_1.tscn" id="1_h0wof"]
+[ext_resource type="PackedScene" uid="uid://c6mvnm4ilc8vm" path="res://player.tscn" id="2_fu4bq"]
+[ext_resource type="Script" uid="uid://cib4xjwhs384f" path="res://human_player_controller.gd" id="3_sbb53"]
+[ext_resource type="Script" uid="uid://c5us0siigewc5" path="res://random_npc_controller.gd" id="4_pbtuc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,62 +14,62 @@ sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
 background_mode = 1
-background_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+background_color = Color(0.12956452, 0.10216985, 0.3909648, 1)
 sky = SubResource("Sky_ig7tw")
 ambient_light_source = 2
 ambient_light_color = Color(0.24115604, 0.24115604, 0.24115601, 1)
 tonemap_mode = 4
-glow_enabled = true
+glow_intensity = 0.0
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 0.0
 
-[node name="Main" type="Node3D"]
-script = ExtResource("1_lquwl")
+[node name="Arena" type="Node3D"]
 
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.8660254, -0.48296297, 0.12940955, 0, 0.25881907, 0.9659258, -0.50000006, 0.83651626, -0.22414389, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.48296297, 0.12940957, 0, 0.25881907, 0.9659259, -0.50000006, 0.83651626, -0.22414389, 0, 0, 0)
 shadow_enabled = true
 sky_mode = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
 
-[node name="Room1" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Room1" parent="." instance=ExtResource("1_h0wof")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+[node name="Player" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_fu4bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -9)
 input_controler = NodePath("HumanPlayerController")
 
 [node name="HumanPlayerController" type="Node" parent="Player"]
-script = ExtResource("3_1bvp3")
+script = ExtResource("3_sbb53")
 metadata/_custom_type_script = "uid://cib4xjwhs384f"
 
-[node name="NPC1" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+[node name="NPC1" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_fu4bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 8)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 2
 
 [node name="RandomNpcController" type="Node" parent="NPC1"]
-script = ExtResource("5_lquwl")
+script = ExtResource("4_pbtuc")
 metadata/_custom_type_script = "uid://c5us0siigewc5"
 
-[node name="NPC2" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+[node name="NPC2" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_fu4bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -9)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 3
 
 [node name="RandomNpcController" type="Node" parent="NPC2"]
-script = ExtResource("5_lquwl")
+script = ExtResource("4_pbtuc")
 bomb_time = 4.0
 metadata/_custom_type_script = "uid://c5us0siigewc5"
 
-[node name="NPC3" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+[node name="NPC3" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_fu4bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 4
 
 [node name="RandomNpcController" type="Node" parent="NPC3"]
-script = ExtResource("5_lquwl")
+script = ExtResource("4_pbtuc")
 bomb_time = 1.5
 metadata/_custom_type_script = "uid://c5us0siigewc5"
 

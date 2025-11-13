@@ -1,4 +1,4 @@
-- split screen
 - stun player on hit
 - paint player screen on hit
 - power ups
+- slow down on fresh paint
