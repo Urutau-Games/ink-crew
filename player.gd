@@ -22,14 +22,12 @@ func _ready() -> void:
 	%Visuals.set_color(bomb_color)
 
 func _process(_delta: float) -> void:
-	var input = input_controler.get_input()
-	
-	if(input.bomb_dropped and _available_bombs > 0):
+	if(input_controler.input.bomb_dropped and _available_bombs > 0):
 		_drop_bomb()
 		_available_bombs -= 1
 
 func _physics_process(delta: float) -> void:
-	var direction := input_controler.get_input().direction.normalized()
+	var direction = input_controler.input.direction.normalized()
 	
 	_rotate_visuals(direction, delta)
 	_apply_movement(direction, delta)
