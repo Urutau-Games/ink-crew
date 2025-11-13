@@ -1,9 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://duwoi70lglhbr"]
 
-[ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b5cg5euqmr6ip" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c6mvnm4ilc8vm" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cib4xjwhs384f" path="res://human_player_controller.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cecx8yqy8878i" path="res://rooms/room_1/room_1.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://c5us0siigewc5" path="res://random_npc_controller.gd" id="5_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,10 +22,6 @@ ambient_light_color = Color(0.24115604, 0.24115604, 0.24115601, 1)
 tonemap_mode = 4
 glow_enabled = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
-radius = 0.4
-height = 1.67
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lquwl")
 
@@ -38,26 +35,45 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_0xm2m")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.979805, 0.935, -9.496761)
-script = ExtResource("1_ig7tw")
-bomb_scene = ExtResource("2_0xm2m")
+[node name="Room1" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -9)
+input_controler = NodePath("HumanPlayerController")
+
+[node name="HumanPlayerController" type="Node" parent="Player"]
+script = ExtResource("3_1bvp3")
+metadata/_custom_type_script = "uid://cib4xjwhs384f"
+
+[node name="NPC1" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 8)
+input_controler = NodePath("RandomNpcController")
+bomb_color = 2
+
+[node name="RandomNpcController" type="Node" parent="NPC1"]
+script = ExtResource("5_lquwl")
+metadata/_custom_type_script = "uid://c5us0siigewc5"
+
+[node name="NPC2" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -9)
+input_controler = NodePath("RandomNpcController")
+bomb_color = 3
+
+[node name="RandomNpcController" type="Node" parent="NPC2"]
+script = ExtResource("5_lquwl")
+bomb_time = 4.0
+metadata/_custom_type_script = "uid://c5us0siigewc5"
+
+[node name="NPC3" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
+input_controler = NodePath("RandomNpcController")
 bomb_color = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_7dm0k")
+[node name="RandomNpcController" type="Node" parent="NPC3"]
+script = ExtResource("5_lquwl")
+bomb_time = 1.5
+metadata/_custom_type_script = "uid://c5us0siigewc5"
 
-[node name="Visuals" type="Node3D" parent="Player"]
-unique_name_in_owner = true
-
-[node name="Cilinder" type="CSGCylinder3D" parent="Player/Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05060458, 0)
-radius = 0.4
-height = 1.67
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0.9823961, 7.5916624, 2.6108222)
-fov = 55.0
-size = 20.0
-
-[node name="Room1" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 25, -0.5)
+fov = 50.0

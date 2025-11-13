@@ -1,0 +1,44 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6mvnm4ilc8vm"]
+
+[ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://d0vrx6igft4o" path="res://player_visuals.gd" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/kenney_textures/texture_01_dark.png" id="4_b26j0"]
+[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/kenney_textures/texture_02_green.png" id="5_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/kenney_textures/texture_02_orange.png" id="6_nvl01"]
+[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="7_ivps1"]
+[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="8_urp6f"]
+[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="9_bwjto"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
+radius = 0.4
+height = 1.67
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+resource_local_to_scene = true
+uv1_triplanar = true
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_onrkg")
+bomb_scene = ExtResource("2_i3pqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7dm0k")
+
+[node name="Visuals" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_i3pqv")
+textures = Dictionary[int, Texture2D]({
+0: ExtResource("4_b26j0"),
+1: ExtResource("5_n7ghd"),
+2: ExtResource("6_nvl01"),
+3: ExtResource("7_ivps1"),
+4: ExtResource("8_urp6f"),
+5: ExtResource("9_bwjto")
+})
+
+[node name="Cilinder" type="CSGCylinder3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05060458, 0)
+radius = 0.4
+height = 1.67
+material = SubResource("StandardMaterial3D_onrkg")
