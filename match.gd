@@ -33,6 +33,7 @@ class MatchData:
 @onready var countdown_label = $Countdown/Control/Panel/CountdownLabel
 @onready var results_table: VBoxContainer = $Results/Control/Panel/VBoxContainer/ResultsTable
 @onready var exit_button: Button = $Menu/Control/Panel/VBoxContainer/VBoxContainer/ExitButton
+@onready var exit_button_results: Button = $Results/Control/Panel/VBoxContainer/VBoxContainer/ExitButton
 
 const AREA_TEMPLATE := "%dm²"
 const TIME_TEMPLATE: String = "%02d:%02d"
@@ -49,6 +50,7 @@ func _ready() -> void:
 	arena.process_mode = Node.PROCESS_MODE_DISABLED
 	EventBus.tile_painted.connect(_on_title_painted)
 	exit_button.visible = not OS.has_feature("web")
+	exit_button_results.visible = not OS.has_feature("web")
 	_match_data = MatchData.new()
 
 func _process(_delta: float) -> void:
