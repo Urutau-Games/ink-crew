@@ -15,11 +15,13 @@ var _mass: float = 15
 @export var max_bombs: int = 1
 @export var bomb_color: Constants.FloorColor = Constants.FloorColor.Green
 
+@export var tag: Constants.PlayerTag = Constants.PlayerTag.None
+
 var _available_bombs: int
 
 func _ready() -> void:
 	_available_bombs = max_bombs
-	%Visuals.set_color(bomb_color)
+	visuals.set_color(bomb_color)
 
 func _process(_delta: float) -> void:
 	if(input_controler.input.bomb_dropped and _available_bombs > 0):
@@ -35,6 +37,7 @@ func _physics_process(delta: float) -> void:
 func _drop_bomb():
 	var bomb: Bomb = bomb_scene.instantiate()
 	bomb.color = bomb_color
+	bomb.bomb_owner = tag
 	add_child(bomb)
 	bomb.global_position = Vector3(roundi(global_position.x), 0.6, roundi(global_position.z))
 	bomb.exploded.connect(_refill_bombs)

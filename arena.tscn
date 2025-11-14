@@ -39,6 +39,7 @@ environment = SubResource("Environment_0xm2m")
 [node name="Player" parent="." node_paths=PackedStringArray("input_controler") instance=ExtResource("2_fu4bq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -9)
 input_controler = NodePath("HumanPlayerController")
+tag = 0
 
 [node name="HumanPlayerController" type="Node" parent="Player"]
 script = ExtResource("3_sbb53")
@@ -48,6 +49,7 @@ metadata/_custom_type_script = "uid://cib4xjwhs384f"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 8)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 2
+tag = 2
 
 [node name="RandomNpcController" type="Node" parent="NPC1"]
 script = ExtResource("4_pbtuc")
@@ -57,6 +59,7 @@ metadata/_custom_type_script = "uid://c5us0siigewc5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -9)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 3
+tag = 3
 
 [node name="RandomNpcController" type="Node" parent="NPC2"]
 script = ExtResource("4_pbtuc")
@@ -67,6 +70,7 @@ metadata/_custom_type_script = "uid://c5us0siigewc5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
 input_controler = NodePath("RandomNpcController")
 bomb_color = 4
+tag = 1
 
 [node name="RandomNpcController" type="Node" parent="NPC3"]
 script = ExtResource("4_pbtuc")

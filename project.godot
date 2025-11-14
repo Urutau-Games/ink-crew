@@ -15,6 +15,10 @@ run/main_scene="uid://cv5loklt3i5d5"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*res://event_bus.gd"
+
 [input]
 
 walk_left={

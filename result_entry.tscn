@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://xg6mhvsw461i"]
+
+[ext_resource type="Script" uid="uid://b7hhlov31q314" path="res://result_entry.gd" id="1_o3bnm"]
+
+[node name="ResultEntry" type="HBoxContainer"]
+offset_right = 214.0
+offset_bottom = 45.0
+size_flags_horizontal = 6
+theme_override_constants/separation = 20
+script = ExtResource("1_o3bnm")
+
+[node name="PlayerLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Player"
+vertical_alignment = 1
+
+[node name="AreaLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100m²"
+horizontal_alignment = 2
+vertical_alignment = 1

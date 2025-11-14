@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv5loklt3i5d5"]
+[gd_scene load_steps=6 format=3 uid="uid://cv5loklt3i5d5"]
 
 [ext_resource type="Script" uid="uid://b5cg5euqmr6ip" path="res://match.gd" id="1_2n26j"]
 [ext_resource type="PackedScene" uid="uid://duwoi70lglhbr" path="res://arena.tscn" id="1_7y1jj"]
+
+[sub_resource type="Gradient" id="Gradient_x8et2"]
+colors = PackedColorArray(0.12941177, 0.101960786, 0.39215687, 0.8509804, 0.4117647, 0.4117647, 0.91764706, 0.8509804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_crtjb"]
+gradient = SubResource("Gradient_x8et2")
+fill_from = Vector2(0.48076922, 0.014957265)
+fill_to = Vector2(0.4508547, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xkuxl"]
+texture = SubResource("GradientTexture2D_crtjb")
 
 [node name="Match" type="Control"]
 layout_mode = 3
@@ -29,6 +40,8 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Arena" parent="GameLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_7y1jj")]
+unique_name_in_owner = true
+process_mode = 4
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -113,3 +126,193 @@ text = "Grape: "
 [node name="PurpleNpcArea" type="Label" parent="UILayer/Control/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="MatchTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CountdownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xkuxl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Control/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/Control/Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "INK CREW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Menu/Control/Panel/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Prototype"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="Menu/Control/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "START"
+
+[node name="ExitButton" type="Button" parent="Menu/Control/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "EXIT"
+
+[node name="Label" type="Label" parent="Menu/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Instructions
+
+You're the green player and need to paint more floor tiles than your concurrents.
+
+AWSD or Arrow Keys -> Move player
+[ ESPACE ] -> Drop bomb"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Results" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="Control" type="Control" parent="Results"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Results/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xkuxl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Results/Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Label2" type="Label" parent="Results/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "RESULTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultsTable" type="VBoxContainer" parent="Results/Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Results/Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RestartButton" type="Button" parent="Results/Control/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RESTART"
+
+[node name="ExitButton" type="Button" parent="Results/Control/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "EXIT"
+
+[node name="Countdown" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="Control" type="Control" parent="Countdown"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Countdown/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xkuxl")
+
+[node name="CountdownLabel" type="Label" parent="Countdown/Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="MatchTimer" to="." method="_on_match_timer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/Control/Panel/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Results/Control/Panel/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Results/Control/Panel/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

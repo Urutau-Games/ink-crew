@@ -1,3 +1,4 @@
 extends Node
 
-signal tile_painted(who: int, color: Constants.FloorColor)
+@warning_ignore("unused_signal")
+signal tile_painted(owner: Constants.PlayerTag, previousOwner: Constants.PlayerTag)

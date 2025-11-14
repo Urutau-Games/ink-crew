@@ -8,14 +8,15 @@ signal exploded()
 @export var textures: Dictionary[Constants.FloorColor, Texture2D] = {}
 
 @export var color: Constants.FloorColor = Constants.FloorColor.Green
+@export var bomb_owner: Constants.PlayerTag = Constants.PlayerTag.None
 
 var _affected_tiles: Array = []
 
-@onready var visuals = $Visuals
+@onready var _visuals = $Visuals
 @onready var _material: StandardMaterial3D
 
 func _ready() -> void:
-	_material = visuals.material
+	_material = _visuals.material
 	_define_color()
 	_adjust_raycasts()
 
@@ -44,7 +45,7 @@ func _explode():
 			raycast.force_raycast_update()
 	
 	for tile in _affected_tiles:
-		tile.paint(color)
+		tile.paint(color, bomb_owner)
 		
 	exploded.emit()
 	queue_free()
