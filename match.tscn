@@ -203,7 +203,7 @@ text = "EXIT"
 layout_mode = 2
 text = "Instructions
 
-You're the green player and need to paint more floor tiles than your concurrents.
+You're the green player and need to paint more floor tiles than your competitors.
 
 AWSD or Arrow Keys -> Move player
 [ ESPACE ] -> Drop bomb"
