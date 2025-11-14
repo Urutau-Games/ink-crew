@@ -32,6 +32,7 @@ class MatchData:
 @onready var menu: CanvasLayer = $Menu
 @onready var countdown_label = $Countdown/Control/Panel/CountdownLabel
 @onready var results_table: VBoxContainer = $Results/Control/Panel/VBoxContainer/ResultsTable
+@onready var exit_button: Button = $Menu/Control/Panel/VBoxContainer/VBoxContainer/ExitButton
 
 const AREA_TEMPLATE := "%dm²"
 const TIME_TEMPLATE: String = "%02d:%02d"
@@ -47,6 +48,7 @@ var result_entry_scene: PackedScene = preload("res://result_entry.tscn")
 func _ready() -> void:
 	arena.process_mode = Node.PROCESS_MODE_DISABLED
 	EventBus.tile_painted.connect(_on_title_painted)
+	exit_button.visible = not OS.has_feature("web")
 	_match_data = MatchData.new()
 
 func _process(_delta: float) -> void:
@@ -74,12 +76,6 @@ func _on_title_painted(who: Constants.PlayerTag, previousOwner: Constants.Player
 	_match_data.score[who] += 1
 	if not previousOwner == Constants.PlayerTag.None:
 		_match_data.score[previousOwner] -= 1
-
-func _unhandled_input(event: InputEvent) -> void:
-	if OS.has_feature("editor"):
-		var keyboard = event as InputEventKey
-		if keyboard and keyboard.keycode == KEY_F3:
-			_restart_scene()
 
 func _restart_scene():
 	get_tree().reload_current_scene()
