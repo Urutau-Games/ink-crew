@@ -25,8 +25,7 @@ textures = Dictionary[int, Texture2D]({
 })
 
 [node name="Visuals" type="CSGSphere3D" parent="."]
-use_collision = true
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 material = SubResource("StandardMaterial3D_573fp")
 
@@ -36,27 +35,27 @@ unique_name_in_owner = true
 [node name="Up" type="RayCast3D" parent="RayCasts"]
 enabled = false
 target_position = Vector3(0, 0, -1)
-collision_mask = 2
+collision_mask = 7
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="Right" type="RayCast3D" parent="RayCasts"]
 enabled = false
 target_position = Vector3(1, 0, 0)
-collision_mask = 2
+collision_mask = 7
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="Down" type="RayCast3D" parent="RayCasts"]
 enabled = false
 target_position = Vector3(0, 0, 1)
-collision_mask = 2
+collision_mask = 7
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="Left" type="RayCast3D" parent="RayCasts"]
 enabled = false
 target_position = Vector3(-1, 0, 0)
-collision_mask = 2
+collision_mask = 7
 hit_from_inside = true
 collide_with_areas = true

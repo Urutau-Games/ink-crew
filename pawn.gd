@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Pawn
 
 var _rotation_acceleration: float = 10
 var _grounded_desacceleration: float = 0
@@ -6,6 +7,7 @@ var _speed: float = 5
 var _mass: float = 15
 
 @onready var visuals: Node3D = %Visuals
+@onready var stun_timer: Timer = $StunTimer
 
 @export_category("Scene Settings")
 @export var bomb_scene: PackedScene
@@ -14,8 +16,11 @@ var _mass: float = 15
 @export_category("Gameplay")
 @export var max_bombs: int = 1
 @export var bomb_color: Constants.FloorColor = Constants.FloorColor.Green
+@export var stun_time: float = .75
 
 @export var tag: Constants.PlayerTag = Constants.PlayerTag.None
+
+var _stunned: bool = false
 
 var _available_bombs: int
 
@@ -24,15 +29,17 @@ func _ready() -> void:
 	visuals.set_color(bomb_color)
 
 func _process(_delta: float) -> void:
-	if(input_controler.input.bomb_dropped and _available_bombs > 0):
-		_drop_bomb()
-		_available_bombs -= 1
+	if not _stunned:
+		if(input_controler.input.bomb_dropped and _available_bombs > 0):
+			_drop_bomb()
+			_available_bombs -= 1
 
 func _physics_process(delta: float) -> void:
-	var direction = input_controler.input.direction.normalized()
+	if(!_stunned):
+		var direction = input_controler.input.direction.normalized()
 	
-	_rotate_visuals(direction, delta)
-	_apply_movement(direction, delta)
+		_rotate_visuals(direction, delta)
+		_apply_movement(direction, delta)
 
 func _drop_bomb():
 	var bomb: Bomb = bomb_scene.instantiate()
@@ -68,3 +75,10 @@ func _rotate_visuals(direction: Vector2, delta: float) -> void:
 		var acceleration = _rotation_acceleration * delta
 		var new_rotation = lerp_angle(current_rotation, look_direction.angle(), acceleration)
 		visuals.rotation.y = new_rotation
+
+func stun():
+	_stunned = true
+	stun_timer.start(stun_time)
+
+func _on_stun_timer_timeout() -> void:
+	_stunned = false

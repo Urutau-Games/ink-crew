@@ -35,6 +35,12 @@ func _explode():
 		raycast.force_raycast_update()
 		while(raycast.is_colliding()):
 			var collider = raycast.get_collider()
+			
+			if collider is Pawn:
+				var pawn := collider as Pawn
+				pawn.stun()
+				break
+			
 			var object = collider.get_parent()
 			
 			if not object is FloorTile:

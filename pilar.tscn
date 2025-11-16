@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5p1rvxb05tmc"]
+[gd_scene load_steps=4 format=3 uid="uid://c5p1rvxb05tmc"]
 
 [ext_resource type="Texture2D" uid="uid://b5chwnt8fkxoh" path="res://assets/kenney_textures/texture_13_dark.png" id="1_hm83i"]
 
@@ -6,11 +6,17 @@
 albedo_texture = ExtResource("1_hm83i")
 uv1_triplanar = true
 
-[node name="Pilar" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hm83i"]
+size = Vector3(1, 2, 1)
+
+[node name="Pilar" type="StaticBody3D"]
+collision_mask = 0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 material_override = SubResource("StandardMaterial3D_bn8xo")
-use_collision = true
 collision_layer = 3
 collision_mask = 0
 size = Vector3(1, 2, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hm83i")

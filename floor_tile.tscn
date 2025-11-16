@@ -27,6 +27,7 @@ textures = Dictionary[int, Texture2D]({
 
 [node name="Tile" type="CSGBox3D" parent="."]
 use_collision = true
+collision_mask = 0
 size = Vector3(1, 0.2, 1)
 material = SubResource("StandardMaterial3D_riurw")
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6mvnm4ilc8vm"]
+
+[ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://pawn.gd" id="1_scsyy"]
+[ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_g7qeg"]
+[ext_resource type="Script" uid="uid://d0vrx6igft4o" path="res://pawn_visuals.gd" id="3_lhn6w"]
+[ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/kenney_textures/texture_01_dark.png" id="4_77fhm"]
+[ext_resource type="Texture2D" uid="uid://7yjh57s1617k" path="res://assets/kenney_textures/texture_02_green.png" id="5_v7x12"]
+[ext_resource type="Texture2D" uid="uid://cjkcoivvyu4bq" path="res://assets/kenney_textures/texture_02_orange.png" id="6_m5juw"]
+[ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="7_eibul"]
+[ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="8_sglw4"]
+[ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="9_2tsen"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
+radius = 0.4
+height = 1.67
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+resource_local_to_scene = true
+uv1_triplanar = true
+
+[node name="Pawn" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_scsyy")
+bomb_scene = ExtResource("2_g7qeg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7dm0k")
+
+[node name="Visuals" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_lhn6w")
+textures = Dictionary[int, Texture2D]({
+0: ExtResource("4_77fhm"),
+1: ExtResource("5_v7x12"),
+2: ExtResource("6_m5juw"),
+3: ExtResource("7_eibul"),
+4: ExtResource("8_sglw4"),
+5: ExtResource("9_2tsen")
+})
+
+[node name="Cilinder" type="CSGCylinder3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05060458, 0)
+radius = 0.4
+height = 1.67
+material = SubResource("StandardMaterial3D_onrkg")
+
+[node name="StunTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

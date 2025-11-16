@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://duwoi70lglhbr"]
 
 [ext_resource type="PackedScene" uid="uid://cecx8yqy8878i" path="res://rooms/room_1/room_1.tscn" id="1_h0wof"]
-[ext_resource type="PackedScene" uid="uid://c6mvnm4ilc8vm" path="res://player.tscn" id="2_fu4bq"]
+[ext_resource type="PackedScene" uid="uid://c6mvnm4ilc8vm" path="res://pawn.tscn" id="2_fu4bq"]
 [ext_resource type="Script" uid="uid://cib4xjwhs384f" path="res://human_player_controller.gd" id="3_sbb53"]
 [ext_resource type="Script" uid="uid://c5us0siigewc5" path="res://random_npc_controller.gd" id="4_pbtuc"]
 
