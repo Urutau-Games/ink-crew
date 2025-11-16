@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6mvnm4ilc8vm"]
+[gd_scene load_steps=14 format=3 uid="uid://c6mvnm4ilc8vm"]
 
 [ext_resource type="Script" uid="uid://bof1gr8wgmxgo" path="res://pawn.gd" id="1_scsyy"]
 [ext_resource type="PackedScene" uid="uid://bq38kepskdjop" path="res://bomb.tscn" id="2_g7qeg"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="7_eibul"]
 [ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="8_sglw4"]
 [ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="9_2tsen"]
+[ext_resource type="Script" uid="uid://djrf617ep1rbl" path="res://splats.gd" id="10_g7qeg"]
+[ext_resource type="PackedScene" uid="uid://cm1sqjnrfh2he" path="res://splat.tscn" id="11_lhn6w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
 radius = 0.4
@@ -47,5 +49,24 @@ material = SubResource("StandardMaterial3D_onrkg")
 
 [node name="StunTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Splats" type="CanvasLayer" parent="."]
+layer = 99
+script = ExtResource("10_g7qeg")
+splat_scene = ExtResource("11_lhn6w")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Splats"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Splats/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

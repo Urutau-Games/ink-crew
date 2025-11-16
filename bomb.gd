@@ -38,7 +38,7 @@ func _explode():
 			
 			if collider is Pawn:
 				var pawn := collider as Pawn
-				pawn.stun()
+				pawn.stun(color)
 				break
 			
 			var object = collider.get_parent()

@@ -8,6 +8,7 @@ var _mass: float = 15
 
 @onready var visuals: Node3D = %Visuals
 @onready var stun_timer: Timer = $StunTimer
+@onready var splats: CanvasLayer = $Splats
 
 @export_category("Scene Settings")
 @export var bomb_scene: PackedScene
@@ -76,8 +77,11 @@ func _rotate_visuals(direction: Vector2, delta: float) -> void:
 		var new_rotation = lerp_angle(current_rotation, look_direction.angle(), acceleration)
 		visuals.rotation.y = new_rotation
 
-func stun():
+func stun(color: Constants.FloorColor):
 	_stunned = true
+	if tag == Constants.PlayerTag.Player1:
+		splats.splat(Constants.colors[color])
+		
 	stun_timer.start(stun_time)
 
 func _on_stun_timer_timeout() -> void:

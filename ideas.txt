@@ -1,4 +1,3 @@
-- stun player on hit
 - paint player screen on hit
+- decal painted area
 - power ups
-- slow down on fresh paint
