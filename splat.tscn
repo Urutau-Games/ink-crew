@@ -1,25 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm1sqjnrfh2he"]
+[gd_scene load_steps=6 format=3 uid="uid://cm1sqjnrfh2he"]
 
 [ext_resource type="Script" uid="uid://bet7srl67wd64" path="res://splat.gd" id="1_wedco"]
-[ext_resource type="Texture2D" uid="uid://ut6aiuu53upg" path="res://assets/kenney_textures/splats_atlas_white.svg" id="2_16b8e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77fhm"]
-atlas = ExtResource("2_16b8e")
-region = Rect2(0, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7x12"]
-atlas = ExtResource("2_16b8e")
-region = Rect2(1024, 0, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5juw"]
-atlas = ExtResource("2_16b8e")
-region = Rect2(0, 1024, 1024, 1024)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eibul"]
-atlas = ExtResource("2_16b8e")
-region = Rect2(1024, 1024, 1024, 1024)
+[ext_resource type="Texture2D" uid="uid://c17eohoborek" path="res://assets/kenney_textures/splat_1.svg" id="2_l4g0n"]
+[ext_resource type="Texture2D" uid="uid://bpk8qh31n2cq6" path="res://assets/kenney_textures/splat_2.svg" id="3_88uyn"]
+[ext_resource type="Texture2D" uid="uid://b7s8bquwx1rya" path="res://assets/kenney_textures/splat_3.svg" id="4_c8h8y"]
+[ext_resource type="Texture2D" uid="uid://cyexraj0gimhr" path="res://assets/kenney_textures/splat_4.svg" id="5_org7h"]
 
 [node name="Splat" type="Sprite2D"]
 script = ExtResource("1_wedco")
-splat_textures = Array[Texture2D]([SubResource("AtlasTexture_77fhm"), SubResource("AtlasTexture_v7x12"), SubResource("AtlasTexture_m5juw"), SubResource("AtlasTexture_eibul")])
+splat_textures = Array[Texture2D]([ExtResource("2_l4g0n"), ExtResource("3_88uyn"), ExtResource("4_c8h8y"), ExtResource("5_org7h")])
 splat_decay_time = 1.5

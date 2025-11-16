@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://yo33fcsr8xiv"]
+[gd_scene load_steps=15 format=3 uid="uid://yo33fcsr8xiv"]
 
 [ext_resource type="Script" uid="uid://dr5ovv38o2qnk" path="res://floor_tile.gd" id="1_u3y6w"]
 [ext_resource type="Texture2D" uid="uid://cnur7vgar2smn" path="res://assets/kenney_textures/texture_01_dark.png" id="2_riurw"]
@@ -7,6 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://br1h6ksvf8ly" path="res://assets/kenney_textures/texture_02_purple.png" id="5_y0asi"]
 [ext_resource type="Texture2D" uid="uid://iteqvs3f455m" path="res://assets/kenney_textures/texture_02_red.png" id="6_fw844"]
 [ext_resource type="Texture2D" uid="uid://cukcrxooajmk1" path="res://assets/kenney_textures/texture_13_light.png" id="7_xag6x"]
+[ext_resource type="Texture2D" uid="uid://c17eohoborek" path="res://assets/kenney_textures/splat_1.svg" id="8_fw844"]
+[ext_resource type="Texture2D" uid="uid://bpk8qh31n2cq6" path="res://assets/kenney_textures/splat_2.svg" id="9_xag6x"]
+[ext_resource type="Texture2D" uid="uid://b7s8bquwx1rya" path="res://assets/kenney_textures/splat_3.svg" id="10_golsh"]
+[ext_resource type="Texture2D" uid="uid://cyexraj0gimhr" path="res://assets/kenney_textures/splat_4.svg" id="11_agwpn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nisnk"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+uv1_triplanar_sharpness = 0.6372806
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riurw"]
 resource_local_to_scene = true
@@ -24,8 +34,10 @@ textures = Dictionary[int, Texture2D]({
 4: ExtResource("6_fw844"),
 5: ExtResource("7_xag6x")
 })
+splat_textures = Array[Texture2D]([ExtResource("8_fw844"), ExtResource("9_xag6x"), ExtResource("10_golsh"), ExtResource("11_agwpn")])
 
 [node name="Tile" type="CSGBox3D" parent="."]
+material_overlay = SubResource("StandardMaterial3D_nisnk")
 use_collision = true
 collision_mask = 0
 size = Vector3(1, 0.2, 1)

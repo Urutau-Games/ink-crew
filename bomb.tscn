@@ -14,7 +14,6 @@ resource_local_to_scene = true
 [node name="Bomb" type="Node3D"]
 top_level = true
 script = ExtResource("1_573fp")
-bomb_timer = null
 bomb_strength = 3
 textures = Dictionary[int, Texture2D]({
 0: ExtResource("2_apr5j"),
@@ -24,8 +23,6 @@ textures = Dictionary[int, Texture2D]({
 4: ExtResource("6_1g03t"),
 5: ExtResource("7_pmxwx")
 })
-color = null
-bomb_owner = null
 
 [node name="Visuals" type="CSGSphere3D" parent="."]
 collision_layer = 8

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ut6aiuu53upg"
-path="res://.godot/imported/splats_atlas_white.svg-67af3f816279c6b1630dedf0ec43d82f.ctex"
+uid="uid://cyexraj0gimhr"
+path="res://.godot/imported/splat_4.svg-31ccad8693aee901e1758d000169b332.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney_textures/splats_atlas_white.svg"
-dest_files=["res://.godot/imported/splats_atlas_white.svg-67af3f816279c6b1630dedf0ec43d82f.ctex"]
+source_file="res://assets/kenney_textures/splat_4.svg"
+dest_files=["res://.godot/imported/splat_4.svg-31ccad8693aee901e1758d000169b332.ctex"]
 
 [params]
 
